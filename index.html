@@ -27,6 +27,19 @@
       });
 
       var runQuery = function() {
+        
+        /*
+        Basic Process:
+        
+        For start date + 1 week...
+        1. Query unique signups with "Through Agenda == True"
+        2. Query Unique Sending Agendas w/ "WorkLife member == False"
+        3. Query Recieved Agendas (total or unique?)
+        
+        Next...
+        1. 
+        */
+        
         var eventName = eventSelect.MPEventSelect('value'),
             propName  = propSelect.MPPropertySelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
@@ -35,6 +48,7 @@
           MP.api.segment(eventName, propName, dateRange).done(function(results) {
             eventGraph.MPChart('setData', results);
             eventTable.MPTable('setData', results);
+            console.log(results);
           });
         }
       };
